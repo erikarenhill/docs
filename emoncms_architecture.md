@@ -450,7 +450,7 @@ You should now see a simple list as follows, you may need to create some feeds f
 
 [http://localhost/framework/feed/create.json?name=power](http://localhost/framework/feed/create.json?name=power)
 
-![text](http://localhost/files/final.png)
+![text](files/final.png)
 
 ### Resources
 
