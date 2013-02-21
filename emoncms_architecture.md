@@ -578,7 +578,36 @@ Lets now upgrade our table view above to a fully dynamic editable table ui creat
 
     https://github.com/emoncms/tablejs
     
-    
+4) Next we need to add an update method to the feed model and controller, in the feed model add:
+
+    public function update($userid,$id,$fields)
+    {
+        $id = intval($id);
+        $userid = intval($userid);
+
+        $fields = json_decode($fields);
+
+        $array = array();
+
+        // Repeat this line changing the field name to add fields that can be updated:
+        if (isset($fields->name)) $array[] = "`name` = '".preg_replace('/[^\w\s-]/','',$fields->name)."'";
+
+        // Convert to a comma seperated string for the mysql query
+        $fieldstr = implode(",",$array);
+
+        $this->mysqli->query("UPDATE feeds SET ".$fieldstr." WHERE `id` = '$id' AND userid = '$userid'");
+
+        if ($this->mysqli->affected_rows>0){
+            return array('success'=>true, 'message'=>'Field updated');
+        } else {
+            return array('success'=>false, 'message'=>'Field could not be updated');
+        }
+    }
+
+and in the controller add (in with the other API method calls)
+
+    if ($route->action == 'update') $output = $feed->update($userid,get('id'),get('fields'));
+
 
     
 ### Resources
