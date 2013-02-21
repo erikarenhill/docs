@@ -608,7 +608,15 @@ and in the controller add (in with the other API method calls)
 
     if ($route->action == 'update') $output = $feed->update($userid,get('id'),get('fields'));
 
+**Try it out**
 
+[http://localhost/framework/feed/](http://localhost/framework/feed/)
+
+You should now see a simple list as follows, you may need to create some feeds first:
+
+[http://localhost/framework/feed/create.json?name=power](http://localhost/framework/feed/create.json?name=power)
+
+![text](files/tablejs.png)
     
 ### Resources
 
