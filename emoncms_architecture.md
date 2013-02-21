@@ -191,13 +191,15 @@ Copy and paste the following code into index.php:
     require "core.php";
     require "route.php";
 
-    $route = new Route($_GET['q']);
+    $route = new Route(get('q'));
     $output = controller($route->controller);
 
     print $output;
 
 Create a file called core.php and add the controller loading function to it:
 
+    <?php
+    
     function controller($controller_name)
     {
         $output = array('content'=>'');
@@ -213,6 +215,15 @@ Create a file called core.php and add the controller loading function to it:
             }
         }
         return $output;
+    }
+    
+Add also to core.php the following helper function for checking if $_GET has been set.
+
+    function get($index)
+    {
+      $val = null;
+      if (isset($_GET[$index])) $val = $_GET[$index];
+      return $val;
     }
 
 Create a folder called Modules and a sub-folder called feed. Inside the feed folder create a file called feed_controller.php and copy and paste the following there:
@@ -372,30 +383,37 @@ This view uses angular js [http://angularjs.org/](http://angularjs.org/)
 
 Create a file in the feed directory called feed_view.html:
 
-    <div class="container" ng-controller="FeedsListCtrl">
-        <h1>Feeds</h1>
+    <div ng-app>
 
-        <table class="table table-bordered">
-            <tr>
-                <th><a ng-click="sort='id'">Id</a></th>
-                <th><a ng-click="sort='name'">Name</a></th>
-            </tr>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
 
-            <tr ng-repeat="feed in feeds | orderBy: sort">
-                <td>{{feed.id}}</td>
-                <td>{{feed.name}}</td>
-            </tr>
-        </table>
+        <div class="container" ng-controller="FeedsListCtrl">
+            <h1>Feeds</h1>
+
+            <table class="table table-bordered">
+                <tr>
+                    <th><a ng-click="sort='id'">Id</a></th>
+                    <th><a ng-click="sort='name'">Name</a></th>
+                </tr>
+
+                <tr ng-repeat="feed in feeds | orderBy: sort">
+                    <td>{{feed.id}}</td>
+                    <td>{{feed.name}}</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <script>
+            function FeedsListCtrl($scope, $http) {
+               $http.get('/framework/feed/list.json').success(function (data) {
+                   $scope.feeds = data;
+               });
+            }
+        </script>
+
     </div>
-
-    <script>
-        function FeedsListCtrl($scope, $http) {
-            $http.get('/framework/feed/list.json').success(function (data) {
-                $scope.feeds = data;
-            });
-        }
-    </script>
-
+    
 Tell the feed controller to load the the feed\_view.html, add the following lines before return $output in feed_controller.php
 
     if ($route->format == 'html')
@@ -424,7 +442,7 @@ Create a folder called Theme and create a file called theme.php with the followi
     <html>
 
         <head>
-             <link href="/framework/Lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+            <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
         </head>
 
         <body style="padding-top:42px;" >
