@@ -470,6 +470,117 @@ You should now see a simple list as follows, you may need to create some feeds f
 
 ![text](files/final.png)
 
+## table.js dynamic editable table view's
+
+Lets now upgrade our table view above to a fully dynamic editable table ui created using a library called table.js developed as part of this project.
+
+1) Replace the content of feed_view.html with the following:
+
+    <?php 
+      global $path; 
+      $path = "http://localhost/framework/";
+    ?>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>Modules/feed/feed.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>Lib/tablejs/table.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>Lib/tablejs/custom-table-fields.js"></script>
+    <style>
+    input[type="text"] {
+         width: 88%; 
+    }
+    </style>
+
+    <div class="container">
+        <h2>Feeds</h2>
+        <div id="table"></div>
+    </div>
+
+    <script>
+
+      var path = "<?php echo $path; ?>";
+
+      // Extemd table library field types
+      for (z in customtablefields) table.fieldtypes[z] = customtablefields[z];
+
+      table.element = "#table";
+
+      table.fields = {
+        'id':{'type':"fixed"},
+        'name':{'type':"text"},
+
+        // Actions
+        'edit-action':{'title':'', 'type':"edit"},
+        'delete-action':{'title':'', 'type':"delete"},
+        'view-action':{'title':'', 'type':"iconlink", 'link':path+"vis/auto?feedid="}
+
+      }
+
+      update();
+
+      function update()
+      {
+        table.data = feed.select();
+        table.draw();
+      }
+
+      var updater = setInterval(update, 5000);
+
+      $("#table").bind("onEdit", function(e){
+        clearInterval(updater);
+      });
+
+      $("#table").bind("onSave", function(e,id,fields_to_update){
+        feed.update(id,fields_to_update); 
+        updater = setInterval(update, 5000);
+      });
+
+      $("#table").bind("onDelete", function(e,id){
+        feed.delete(id); 
+      });
+
+    </script>
+    
+2) Create a new script called feed.js in the Modules/feed folder with the following in it:
+
+
+    var feed = {
+
+      'create':function()
+      {
+        var result = {};
+        $.ajax({ url: path+"feed/create.json", dataType: 'json', async: false, success: function(data) {result = data;} });
+        return result;
+      },
+
+      'select':function()
+      {
+        var result = {};
+        $.ajax({ url: path+"feed/select.json", dataType: 'json', async: false, success: function(data) {result = data;} });
+        return result;
+      },
+
+      'update':function(id, fields)
+      {
+        var result = {};
+        $.ajax({ url: path+"feed/update.json", data: "id="+id+"&fields="+JSON.stringify(fields), async: false, success: function(data){} });
+        return result;
+      },
+
+      'delete':function(id)
+      {
+        $.ajax({ url: path+"feed/delete.json", data: "id="+id, async: false, success: function(data){} });
+      }
+
+    }
+
+3) Create a folder called Lib in the framework directory and download and place the tablejs library in that folder:
+
+    https://github.com/emoncms/tablejs
+    
+    
+
+    
 ### Resources
 
 - [Models in MVC](http://blog.astrumfutura.com/2008/12/the-m-in-mvc-why-models-are-misunderstood-and-unappreciated/)
