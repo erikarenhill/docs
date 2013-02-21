@@ -556,7 +556,7 @@ Lets now upgrade our table view above to a fully dynamic editable table ui creat
       'select':function()
       {
         var result = {};
-        $.ajax({ url: path+"feed/select.json", dataType: 'json', async: false, success: function(data) {result = data;} });
+        $.ajax({ url: path+"feed/list.json", dataType: 'json', async: false, success: function(data) {result = data;} });
         return result;
       },
 
