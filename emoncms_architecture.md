@@ -1,8 +1,8 @@
 # Emoncms design
 
-**Note:** This is an rough first draft. There are still quite a few parts that need fuller explanations, especially in the views and theme section.
+**Note:** This is a rough first draft. There are still quite a few parts that need fuller explanations, especially in the views and theme section.
 
-This guide is both an explanation of the emoncms framework and a step by step guide to building the core emoncms framework from scratch. This is the recommended place to start if your interested in learning how emoncms works.
+This guide is both an explanation of the emoncms framework and a step by step guide to building the core emoncms framework from scratch. This is the recommended place to start if you're interested in learning how emoncms works.
 
 ### Overview
 
