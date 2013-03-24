@@ -1,4 +1,4 @@
-# Emoncms design
+## Emoncms design
 
 **Note:** This is a rough first draft. There are still quite a few parts that need fuller explanations, especially in the views and theme section.
 
