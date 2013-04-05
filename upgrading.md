@@ -28,13 +28,13 @@ Enter your database settings in to settings.php including username, password, da
 
 Open emoncms in your browser and login with the admin user - this will be the first user you created. Then navigate to the Admin tab (top-right). Click 'Update & check' this will update your database. If you get an error when you first login ignore it and go directly to:
 
-    http://localhost/emoncms/admin 
+    http://localhost/dev/admin/view
 
 #### 4) Run migrate_inputs.php script
 
 Start by opening migrate_inputs.php in a text editor and removing the die; line which forces the script to exit. Then in your browser go to:
 
-    http://localhost/emoncms/migrate_inputs.php
+    http://localhost/dev/migrate_inputs.php
 
 The script will list all the changes required. If your happy with the result, first backup your input table and then run migrate_inputs.php with the line $execute = false; set to true to automatically implement all the changes.
 
