@@ -1,94 +1,35 @@
 ## Upgrading emoncms
 
-### Upgrading to development branch (22 March 2013)
 
-#### 1) Download the dev branch and place in a folder called dev
+## Upgrading from version 4.0 (Modular emoncms)
 
-    https://github.com/emoncms/emoncms/tree/dev
+Download the latest version either by clicking on the zip icon in github or using git if you used git clone:
 
-If you use git, use **git clone** when installing for the first time:
+    $ git pull origin master
+    
+Make a copy of your current settings.php file and create a new settings.php file from default.settings.php. Enter your emoncms database settings.
+Add the line:
+ 
+    $updatelogin = true;
+    
+to settings.php to enable a special database update only session, be sure to remove this line from settings.php once complete.
 
-    $ git clone -b dev git@github.com:emoncms/emoncms.git dev
+In your internet browser goto open the admin/view page:
 
-and then all you need to call is
+    http://localhost/emoncms/admin/view
+    
+Click on the database update and check button to launch the database update script. 
+You should now see a list of changes to be performed on your existing emoncms database.
+You may at this point want to backup your input and users table before applying the changes.
+Once your happy with the changes click on apply changes to automatically apply all changes.
 
-    $ git pull origin dev 
+That should be it.
 
-and it will download the latest changes.
+You may need to clear your cache if you find some of the interfaces buggy/missing.
 
-#### 2) Set emoncms settings
+## Upgrading from older versions, version 2 and 3
 
-Create a new copy of default.settings.php and call it settings.php.
-
-    $ cp default.settings.php settings.php
-
-Enter your database settings in to settings.php including username, password, database name and server.
-
-#### 3) Run database update 
-
-Open emoncms in your browser and login with the admin user - this will be the first user you created. Then navigate to the Admin tab (top-right). Click 'Update & check' this will update your database. If you get an error when you first login ignore it and go directly to:
-
-    http://localhost/dev/admin/view
-
-#### 4) Run migrate_inputs.php script
-
-Start by opening migrate_inputs.php in a text editor and removing the die; line which forces the script to exit. Then in your browser go to:
-
-    http://localhost/dev/migrate_inputs.php
-
-The script will list all the changes required. If your happy with the result, first backup your input table and then run migrate_inputs.php with the line $execute = false; set to true to automatically implement all the changes.
-
-Once complete, disable the script again from accidental running by placing die at the top of the script, check that the result is a blank page when you try to run it again.
-
-#### 5) Rename dev folder
-
-If your happy that all the above steps went ok and you get no errors as you navigate through the development branch of emoncms in your browser then rename your old emoncms folder to something like emoncmsold and rename the dev branch folder to emoncms. This will allow any monitoring equipment to seemlessly start posting to the development branch.
-
-If any of the pages look mysteriously empty, try clearing your browsers cache.
-
----
-
-### Upgrading from older emoncms versions
-
-If you have an emoncms version that is pre November 2012 it is likely that you have the version here [https://github.com/openenergymonitor/emoncms3](https://github.com/openenergymonitor/emoncms3) the current version is now in a different location as the change involved a large refactoring of emoncms code and with the new modular approach it made sense to keep all the emoncms repositories in one place rather than mixing with hardware firmware and other things. For more info see the [http://openenergymonitor.blogspot.com/2012/10/emoncms-development-update-modules.html](blog post).
-
-If your upgrading from a pre November 2012 (emoncms3) to the current version [https://github.com/emoncms/emoncms](https://github.com/emoncms/emoncms) rename your old emoncms folder to something like emoncms_tmp as a backup until your happy that the new installation is fully working.
-
-#### 1) Download the current version:
-
-    https://github.com/emoncms/emoncms
-
-If you use git, use **git clone** when installing for the first time:
-
-    $ git clone git@github.com:emoncms/emoncms.git
-
-and then all you need to call is
-
-    $ git pull origin master 
-
-and it will download the latest changes.
-
-#### 2) Set emoncms settings
-
-If you already have a settings.php file rename it to backup.settings.php.
-
-    $ mv  settings.php backup.settings.php
-
-Create a new copy of default.settings.php and call it settings.php.
-
-    $ cp default.settings.php settings.php
-
-Enter your database settings in to settings.php including username, password, database name and server.
-
-#### 3) Run database update 
-
-Open emoncms in your browser and login with the admin user - this will be the first user you created. Then navigate to the Admin tab (top-right). Click 'Update & check' this will update your database.
-
-![db upgrade check](files/dbupdatecheck.png)
-
-If you get an error, it may disappear if you run it a second time and the upgrade will complete as normal, this is a known bug.
-
-#### 4) Complete the steps below that apply to you:
+Upgrade scripts for older versions will be reintroduced very soon, which will make this much easier.
 
 #### 15th November 2012 - Removal of feed_relation table and new userid field in feeds table.
 
