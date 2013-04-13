@@ -175,7 +175,13 @@ At the bottom of the file comment out the line (by adding a '#' at begining)
 
 [Ctrl+X] then [y] then [Enter] to save and exit
 
-### Install serial PHP libraries
+### Install rfm12pi gateway service
+
+Install one of the two available gateway scripts to let them run on startup:
+
+#### PHP Gateway
+
+Install serial PHP libraries
 
     $ sudo apt-get install php-pear php5-dev
     $ sudo pecl install channel://pecl.php.net/dio-0.0.6
@@ -185,25 +191,43 @@ add extension=dio.so to file in the beginning of the ;Dynamic Extensions; sectio
 
 [Ctrl+X] then [y] then [Enter] to save and exit
 
-### Install rfm12pi gateway service
-
-There are two options here either to use the python gateway or the php gateway, both do pretty much the same thing. To install a gateway script copy the service script to /etc/init.d:
+Install rfm12piphp gateway service:
 
     sudo cp rfm12piphp /etc/init.d/
     sudo chmod 755 /etc/init.d/rfm12piphp
     sudo update-rc.d rfm12piphp defaults
 
-To complete reboot the pi
+#### Python Gateway
+
+  Install python serial port and mySQL modules
+
+    $ sudo aptitude install python-serial python-mysqldb
+  
+  Ensure the script is executable
+    $ chmod 755 /var/www/emoncms/Modules/raspberrypi/rfm2pigateway.py
+  
+  Create groupe emoncms and make user pi part of it
+
+    $ sudo groupadd emoncms
+    $ usermod -a -G emoncms pi
+
+  Create a directory for the logfiles and give ownership to user pi, group emoncms
+
+    $ sudo mkdir /var/log/rfm2pigateway
+    $ sudo chown pi:emoncms /var/log/rfm2pigateway
+    $ sudo chmod 750 /var/log/rfm2pigateway
+
+  Make script run as daemon on startup
+
+    $ sudo cp /var/www/emoncms/Modules/raspberrypi/rfm2pigateway.init.dist /etc/init.d/rfm2pigateway
+    $ sudo chmod 755 /etc/init.d/rfm2pigateway
+    $ update-rc.d rfm2pigateway defaults 99
+
+### Reboot
+
+To complete all of the above reboot the pi
 
     $ sudo reboot
-
-Start the service with:
-
-    sudo service rfm12piphp start 
-
-To look at the log file
-
-    $ tail -f -n 100 /var/log/rfm12piphp.log
 
 #### 10) In an internet browser, load emoncms:
 
