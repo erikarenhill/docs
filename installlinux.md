@@ -1,6 +1,6 @@
-## Install Emoncms on Ubuntu / Debian / Raspberry PI
+## Install Emoncms on Ubuntu / Debian
 
-This installation guide was create when installing emoncms on the PI with a blank install of raspbian “wheezy”, however as the raspbian wheezy is based on debian this guide should work on most debian systems including Ubuntu.
+This guide should work on most debian systems including Ubuntu. For installation guide on installing emoncms on a raspberrypi see [raspberrypi from ready-to-go image](http://emoncms.org/site/docs/raspberrypiimage) or [raspberrypi build from scratch](http://emoncms.org/site/docs/raspberrypibuild).
 
 #### 1) Install mysql
 
@@ -30,13 +30,10 @@ Change (line 7 and line 11), "AllowOverride None" to "AllowOverride All".
     $ sudo /etc/init.d/apache2 restart
 
 ### Installing emoncms:
-#### 6) Install git (optional)
+
+#### 6) Install git (recommended but optional)
+
 $ sudo apt-get install git-core
-Follow this tutorial on creating keys etc:
-
-[https://help.github.com/articles/generating-ssh-keys](https://help.github.com/articles/generating-ssh-keys)
-
-Helpful tip: If doing this via SSH use *$ cat /home/pi/.ssh/id_rsa.pub* to display the SSH key in the terminal window. then select and [Ctrl + Shift + C] to copy to clipboard ready to paste into Github setting page. 
 
 #### 7) Download Emoncms
 
@@ -44,7 +41,7 @@ First cd into the var directory:
 
     $ cd /var/
 
-Set the permissions of the www directory to be owned by the pi username:
+Set the permissions of the www directory to be owned by your username (on the raspberrypi its pi):
 
     $ sudo chown pi www
 
@@ -52,9 +49,9 @@ Cd into www directory
 
     $ cd www
 
-Download old stable emoncms using git:
+Download emoncms using git:
 
-    $ git clone git://github.com/emoncms/emoncms.git
+    $ git clone https://github.com/emoncms/emoncms.git
 
 Alternatively download emoncms and unzip to your server:
 
@@ -83,13 +80,16 @@ Make a copy of default.settings.php and call it settings.php
 
     $ cp default.settings.php settings.php
 
-Open settings.php in an editor nano works great on the pi:
+Open settings.php in an editor:
 
     $ nano settings.php
 
-How nice is the syntax highlighting on the pi!!:
+Enter in your database settings.
 
-![Settings](files/install_settings.png)
+    $username = "USERNAME";
+    $password = "PASSWORD";
+    $server   = "localhost";
+    $database = "emoncms";
 
 Enter in your database settings.
 
@@ -102,8 +102,6 @@ Save (Ctrl-X), type Y and exit
 The first time you run emoncms it will automatically setup the database and you will be taken straight to the register/login screen. 
 
 Create an account by entering your email and password and clicking register to complete.
-
-![Login](files/install_login.png)
 
 #### 11) PHP Suhosin module configuration (Optional - Debian 6)
 

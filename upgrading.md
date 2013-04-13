@@ -1,33 +1,38 @@
 ## Upgrading emoncms
 
 
-## Upgrading from version 4.0 (Modular emoncms)
+### Upgrading from version 4.0 to 5.0
 
-Download the latest version either by clicking on the zip icon in github or using git if you used git clone:
+**Note:** Version 4.0 was commonly refered to as modular emoncms. 
+
+#### 1) Download
+Download the latest version either by clicking on the zip icon in github or if you previously used git clone you can download the latest changes with:
 
     $ git pull origin master
     
-Make a copy of your current settings.php file and create a new settings.php file from default.settings.php. Enter your emoncms database settings.
-Add the line:
+#### 2) Settings.php
+Make a copy of your current *settings.php* file and create a new *settings.php* anew from *default.settings.php* Enter your emoncms database settings.
+
+Add the following line to the bottom of *settings.php* to enable a special database update only session, be sure to remove this line from settings.php once complete:
  
     $updatelogin = true;
     
-to settings.php to enable a special database update only session, be sure to remove this line from settings.php once complete.
-
-In your internet browser goto open the admin/view page:
+#### 3) Run the database updater
+In your internet browser open the admin/view page and click on the database update and check button to launch the database update script.
 
     http://localhost/emoncms/admin/view
     
-Click on the database update and check button to launch the database update script. 
 You should now see a list of changes to be performed on your existing emoncms database.
 You may at this point want to backup your input and users table before applying the changes.
-Once your happy with the changes click on apply changes to automatically apply all changes.
 
 That should be it.
 
-You may need to clear your cache if you find some of the interfaces buggy/missing.
+#### Troubleshooting
 
-## Upgrading from older versions, version 2 and 3
+You may need to clear your browser cache if an interface appears buggy.
+
+
+### Upgrading from older versions, version 2 and 3
 
 Upgrade scripts for older versions will be reintroduced very soon, which will make this much easier.
 
