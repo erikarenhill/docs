@@ -32,7 +32,7 @@ Locate the directory of your downloaded emoncms image in terminal and write it t
 
 <div class='alert alert-error'><i class='icon-fire'></i> <b>Warning:</b> take care with running the following command that your pointing at the right drive! If you point at your computer drive you will loose a lot of data!</div>
 
-    $ sudo dd bs=4M if=emoncmspi.img of=/dev/sdb
+    $ sudo dd bs=4M if=emoncmspiv5avr.img of=/dev/sdb
 
 <br>
 
