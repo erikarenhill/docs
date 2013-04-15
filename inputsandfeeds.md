@@ -12,6 +12,10 @@ If your using standard openenergymonitor emontx firmware have a look at this pag
 
 At the moment the input page looks quite sparse, you can add a description to make it easier to identify the inputs and once you have added processes as described below a summary of the processes added will appear on the input list page.
 
+**Adding a description**
+
+To add a description click on the pencil icon to bring up in-line editing then add a description to the description box. Dont change the input name as the input name is how the input is identified by hardware posting to emoncms. If you change the input name another input will be made in its place.
+
 ### Inputs, feeds and input processing
 
 One of the core features of emoncms is input processing and therefore separation between inputs and feeds.
