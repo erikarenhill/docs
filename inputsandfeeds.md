@@ -4,9 +4,13 @@ Click on the Inputs link in the top bar, this will show a page with a yellow box
 
 This page shows all the input API options that exist and is the location of the most up to date input API documentation. Click on the **http://emoncms.org/input/post.json?node=1&csv=100,200,300** example link and select open in new tab to create some example inputs assigned to node id 1\.
 
-Navigate back to the inputs page and you should see a white box called Node 1, click on the + button to show the three inputs that belong to node 1\.
+Navigate back to the inputs page and you should see three inputs:
 
-![](files/guide/use_emoncms_inputs.png)
+![](files/guide/inputlist01.png)
+
+If your using standard openenergymonitor emontx firmware have a look at this page on how to identify the inputs: [Identifying inputs](http://emoncms.org/site/docs/identifyinginputs)
+
+At the moment the input page looks quite sparse, you can add a description to make it easier to identify the inputs and once you have added processes as described below a summary of the processes added will appear on the input list page.
 
 ### Inputs, feeds and input processing
 
