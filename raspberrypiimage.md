@@ -46,7 +46,7 @@ That's it all you need to do now is insert the SD card in the pi, connect ethern
 
 <h3>Note: Browser Compatibility</h3>
 
-<p><b>Chrome Ubuntu 23.0.1271.97</b> - developed with, works great.</p>
+<p><b>Chrome Ubuntu 25.0.1364.160</b> - developed with, works great.</p>
 
 <p><b>Chrome Windows 25.0.1364.172</b> - quick check revealed no browser specific bugs.</p>
 
