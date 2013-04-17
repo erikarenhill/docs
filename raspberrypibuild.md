@@ -187,13 +187,13 @@ Install serial PHP libraries
     $ sudo pecl install channel://pecl.php.net/dio-0.0.6
     $ sudo nano /etc/php5/cli/php.ini
 
-add *extension=dio.so* to file in the beginning of the ;Dynamic Extensions; section on line 843 
+add *extension=dio.so* to file in the beginning of the ;Dynamic Extensions; section on line 843. [Ctrl+W] then enter *Dynamic Extensions* can be used to search for the correct section  
 
 [Ctrl+X] then [y] then [Enter] to save and exit
 
 Install rfm12piphp gateway service:
 
-    sudo cp rfm12piphp /etc/init.d/
+    sudo cp /var/www/emoncms/Modules/raspberrypi/rfm12piphp /etc/init.d/
     sudo chmod 755 /etc/init.d/rfm12piphp
     sudo update-rc.d rfm12piphp defaults
 
