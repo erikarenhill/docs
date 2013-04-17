@@ -177,7 +177,7 @@ At the bottom of the file comment out the line (by adding a '#' at begining)
 
 ### Install rfm12pi gateway service
 
-Install one of the two available gateway scripts and let them run on startup. The Python gateway is the latest and greatest:
+Install one of the two available gateway scripts and let them run on startup. The PHP gateway is the latest and greatest:
 
 #### PHP Gateway
 
