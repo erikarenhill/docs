@@ -35,9 +35,8 @@ Locate the directory of your downloaded emoncms image in terminal and write it t
     $ sudo dd bs=4M if=emoncmspiv5avr.img of=/dev/sdb
 
 <br>
-
 #### 3) Intall RFM12Pi
-Intall RFM12Pi expansion module onto the Pi's GPIO pins taking care to align up pin 1. This needs to be done BEFORE pi is booted up
+Install RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care to align up pin 1. This needs to be done BEFORE pi is booted up
 
 #### 4) Power it up!
 
