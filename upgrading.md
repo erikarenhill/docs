@@ -25,6 +25,13 @@ In your internet browser open the admin/view page and click on the database upda
 You should now see a list of changes to be performed on your existing emoncms database.
 You may at this point want to backup your input and users table before applying the changes.
 
+#### 4) If you're running emoncms on a Raspberry Pi with an RFM12Pi and RaspberryPi emoncms module
+You will need to remove the cron job entry for the PHP gateway script. Run 
+    
+    $ sudo nano/etc/crontab 
+    
+and remove the entry with emoncms php. Now restart the Pi. The new Deamon script should be runnning see RaspberryPi emoncms module Github Readme for info on how to check
+
 That should be it.
 
 #### Troubleshooting
