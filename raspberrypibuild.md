@@ -177,7 +177,7 @@ At the bottom of the file comment out the line (by adding a '#' at begining)
 
 ### Install rfm12pi gateway service
 
-Install one of the two available gateway scripts to let them run on startup:
+Install one of the two available gateway scripts and let them run on startup. The Python gateway is the latest and greatest:
 
 #### PHP Gateway
 
@@ -187,7 +187,7 @@ Install serial PHP libraries
     $ sudo pecl install channel://pecl.php.net/dio-0.0.6
     $ sudo nano /etc/php5/cli/php.ini
 
-add extension=dio.so to file in the beginning of the ;Dynamic Extensions; section on line 843 
+add *extension=dio.so* to file in the beginning of the ;Dynamic Extensions; section on line 843 
 
 [Ctrl+X] then [y] then [Enter] to save and exit
 
@@ -204,9 +204,10 @@ Install rfm12piphp gateway service:
     $ sudo aptitude install python-serial python-mysqldb
   
   Ensure the script is executable
+  
     $ chmod 755 /var/www/emoncms/Modules/raspberrypi/rfm2pigateway.py
   
-  Create groupe emoncms and make user pi part of it
+  Create group emoncms and make user pi part of it
 
     $ sudo groupadd emoncms
     $ usermod -a -G emoncms pi
@@ -229,7 +230,7 @@ To complete all of the above reboot the pi
 
     $ sudo reboot
 
-#### 10) In an internet browser, load emoncms:
+#### 10) In an internet browser on the local ntwork, load emoncms by browsing to the Pi's IP address:
 
 <div class='alert alert-info'>
 
