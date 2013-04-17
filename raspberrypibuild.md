@@ -210,7 +210,7 @@ Install rfm12piphp gateway service:
   Create group emoncms and make user pi part of it
 
     $ sudo groupadd emoncms
-    $ usermod -a -G emoncms pi
+    $ sudo usermod -a -G emoncms pi
 
   Create a directory for the logfiles and give ownership to user pi, group emoncms
 
@@ -222,7 +222,7 @@ Install rfm12piphp gateway service:
 
     $ sudo cp /var/www/emoncms/Modules/raspberrypi/rfm2pigateway.init.dist /etc/init.d/rfm2pigateway
     $ sudo chmod 755 /etc/init.d/rfm2pigateway
-    $ update-rc.d rfm2pigateway defaults 99
+    $ sudo update-rc.d rfm2pigateway defaults 99
 
 ### Reboot
 
