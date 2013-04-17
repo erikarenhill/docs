@@ -36,7 +36,10 @@ Locate the directory of your downloaded emoncms image in terminal and write it t
 
 <br>
 
-#### 3) Power it up!
+#### 3) Intall RFM12Pi
+Intall RFM12Pi expansion module onto the Pi's GPIO pins taking care to align up pin 1. This needs to be done BEFORE pi is booted up
+
+#### 4) Power it up!
 
 That's it all you need to do now is insert the SD card in the pi, connect ethernet and power it up! Access the PI via your internet browser in the same way as you would access your home router. You can usually find the ip address of the PI by looking at the DHCP table in your router. Alternatively, you can use a network scanning app such as Fing (android), iNet (Mac), iNet (iPhone) to scan your network.
 
