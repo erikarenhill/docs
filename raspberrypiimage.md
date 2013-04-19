@@ -4,6 +4,9 @@
 
 [emoncmspiv5avr.zip](https://www.dropbox.com/s/i2cnt9quzlhoeu9/emoncmspiv5avr.zip) (771.5Mb)
 
+The image need a minimum SD card size of 4GB. On a 4GB card 1.5GB is free for data storage. If you're card it larger than 4GB you can expand the partition by running **$ sudo raspi-config** once your're up and running
+
+
 #### 2) Write image to an SD card (Linux)
 
 Start by inserting your SD card, your distribution should mount it automatically so the first step is to unmount the SD card and make a note of the SD card device name, to view mounted disks and partitions run:
@@ -36,11 +39,22 @@ Locate the directory of your downloaded emoncms image in terminal and write it t
 
 <br>
 #### 3) Intall RFM12Pi
-Install RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care to align up pin 1. This needs to be done BEFORE pi is booted up
+Install RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care to align up pin 1. **The RFM12Pi should be installed BEFORE the Pi is booted up.**
 
 #### 4) Power it up!
 
 That's it all you need to do now is insert the SD card in the pi, connect ethernet and power it up! Access the PI via your internet browser in the same way as you would access your home router. You can usually find the ip address of the PI by looking at the DHCP table in your router. Alternatively, you can use a network scanning app such as Fing (android), iNet (Mac), iNet (iPhone) to scan your network.
+If you're running the latest image (19/04/13) the host name of the Pi is emoncmspi. You should be able to access the emoncms login on the Pi by browsing to 
+    
+    http://emoncmspi
+    
+ssh should also be possible using the host name 
+
+    $ ssh pi@emoncmspi
+    
+Return to the OpenEnergyMonitor Guide to setup your sensor nodes and map the inputs in emoncms: http://openenergymonitor.org/emon/guide
+
+The image 
 
 <div class='alert alert-info'>
 
