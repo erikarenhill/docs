@@ -2,7 +2,9 @@
 
 #### 1) Download the ready-to-go SD card image:
 
-[emoncmspiv5avr.zip](https://www.dropbox.com/s/i2cnt9quzlhoeu9/emoncmspiv5avr.zip) (771.5Mb)
+Latest: [emoncmspiv5avr_19-05-13.imp.zip](https://www.dropbox.com/s/mz3klx0a2caelzo/emoncmspiv5avr_19-05-13.img.zip) (1.1GB)
+
+Older: [emoncmspiv5avr.zip](https://www.dropbox.com/s/i2cnt9quzlhoeu9/emoncmspiv5avr.zip) (771.5Mb)
 
 The image need a minimum SD card size of 4GB. On a 4GB card 1.5GB is free for data storage. If you're card it larger than 4GB you can expand the partition by running **$ sudo raspi-config** once your're up and running
 
@@ -34,6 +36,10 @@ If the card has more than one partition unmount that also:
 Locate the directory of your downloaded emoncms image in terminal and write it to an SD card using linux tool *dd*:
 
 <div class='alert alert-error'><i class='icon-fire'></i> <b>Warning:</b> take care with running the following command that your pointing at the right drive! If you point at your computer drive you will loose a lot of data!</div>
+
+    $ sudo dd bs=4M if=emoncmspiv5avr_19-05-13.img of=/dev/sdb 
+    
+or for the older image:
 
     $ sudo dd bs=4M if=emoncmspiv5avr.img of=/dev/sdb
 
