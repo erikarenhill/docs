@@ -2,9 +2,21 @@
 
 #### 1) Download the ready-to-go SD card image:
 
-Latest: [emoncmspiv5avr_19-05-13.imp.zip](https://www.dropbox.com/s/mz3klx0a2caelzo/emoncmspiv5avr_19-05-13.img.zip) (1.1GB)
+**Latest: emoncmspiv5avr_19-05-13.imp.zip (1.1GB)**
 
-Older: [emoncmspiv5avr.zip](https://www.dropbox.com/s/i2cnt9quzlhoeu9/emoncmspiv5avr.zip) (771.5Mb)
+[Dropbox Download Mirror 1](https://www.dropbox.com/s/mz3klx0a2caelzo/emoncmspiv5avr_19-05-13.img.zip)
+
+
+[Dropbox Download Mirror 2](https://www.dropbox.com/s/6x095kmgkead78u/emoncmspiv5avr_19-05-13.img.zip)
+
+[Ubuntu One Download Mirror 3](http://t.co/xwVRlrC5Vj)
+
+[Torrent Download](http://t.co/Brra4LorVs) -please help seed, more info [here](http://t.co/amYWyjUJAI)
+
+
+
+
+*Older Image: [emoncmspiv5avr.zip](https://www.dropbox.com/s/i2cnt9quzlhoeu9/emoncmspiv5avr.zip) (771.5Mb)*
 
 The image need a minimum SD card size of 4GB. On a 4GB card 1.5GB is free for data storage. If you're card it larger than 4GB you can expand the partition by running **$ sudo raspi-config** once your're up and running
 
