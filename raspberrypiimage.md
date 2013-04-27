@@ -11,7 +11,7 @@
 
 [Ubuntu One Download Mirror 3](http://t.co/xwVRlrC5Vj)
 
-[Torrent Download](http://t.co/Brra4LorVs) -please help seed, more info [here](http://t.co/amYWyjUJAI)
+[Torrent Download](http://torcache.net/torrent/AED670234438B2DDB7FC4842F429041F31696693.torrent) -please help seed, more info [here](http://openenergymonitor.org/emon/node/2278)
 
 
 
