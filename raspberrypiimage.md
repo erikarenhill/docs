@@ -1,11 +1,19 @@
 ## Emoncms on the Raspberry PI - Ready-to-go image
 
 #### 1) Download the ready-to-go SD card image:
+<br>
 
-**Latest: emoncmspiv5avr_19-05-13.imp.zip (1.1GB)**
+**Latest: emoncmspiv5avr_02_05_13.zip (770.9MB)**
+
+[Dropbox Download Mirror 1](https://www.dropbox.com/s/koqvr4yp8spl59d/emoncmspiv5avr_02_05_13.zip)
+* with minimal log files turned on by default to reduce Raspberry Pi SD card wear
+
+<br>
+
+
+**Older: emoncmspi image (1.1GB)**
 
 [Dropbox Download Mirror 1](https://www.dropbox.com/s/mz3klx0a2caelzo/emoncmspiv5avr_19-05-13.img.zip)
-
 
 [Dropbox Download Mirror 2](https://www.dropbox.com/s/6x095kmgkead78u/emoncmspiv5avr_19-05-13.img.zip)
 
@@ -16,7 +24,6 @@
 
 
 
-*Older Image: [emoncmspiv5avr.zip](https://www.dropbox.com/s/i2cnt9quzlhoeu9/emoncmspiv5avr.zip) (771.5Mb)*
 
 The image need a minimum SD card size of 4GB. On a 4GB card 1.5GB is free for data storage. If you're card it larger than 4GB you can expand the partition by running **$ sudo raspi-config** once your're up and running
 
